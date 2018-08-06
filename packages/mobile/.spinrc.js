@@ -35,7 +35,6 @@ const config = {
     cache: '../../.cache',
     webpackDll: true,
     reactHotLoader: false,
-    persistGraphQL: false,
     defines: {
       __DEV__: process.env.NODE_ENV !== 'production',
       __API_URL__: '"http://localhost:8080/graphql"',

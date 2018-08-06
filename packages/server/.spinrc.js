@@ -24,7 +24,6 @@ const config = {
     ssr: true,
     webpackDll: true,
     reactHotLoader: false,
-    persistGraphQL: false,
     frontendRefreshOnBackendChange: true,
     defines: {
       __DEV__: process.env.NODE_ENV !== 'production',
