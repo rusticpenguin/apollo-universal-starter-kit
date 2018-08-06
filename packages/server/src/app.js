@@ -63,7 +63,7 @@ if (module.hot) {
       await graphqlServer.stop();
     }
   });
-  module.hot.accept(['./middleware/website']);
+  module.hot.accept(['./middleware/website', './graphql']);
 }
 
 export default app;
