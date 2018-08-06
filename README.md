@@ -211,8 +211,7 @@ If you don't need some of these platforms you can turn off building their code i
 | ssr                            | Use server side rendering in backend                                            |
 | webpackDll                     | Utilize Webpack DLLs to speed up incremental builds                             |
 | frontendRefreshOnBackendChange | Trigger web frontend refresh when backend code changes                     |
-| reactHotLoader                 | Utilize React Hot Loader v3                                                     |
-| persistGraphQL                 | Generate and use persistent GraphQL queries                                     |
+| reactHotLoader                 | Utilize React Hot Loader v3                                                     |                                     
 
 There are also application config options available in `config/app.js` to aid with debugging GraphQL and SQL:
 
@@ -350,15 +349,11 @@ Check [subscription module documentation](packages/client/src/modules/subscripti
   practical needs during development and using `React Hot Loader v3` in addition to `Webpack HMR` makes hot reloading
   less predictable and buggy. To turn `React Hot Loader v3` on: set `reactHotLoader` field of `.spinrc.js` to `true`.
 
-* [PersistGraphQL Webpack Plugin] is a tool to gather static GraphQL queries for GraphQL projects and inject them into
-  build. It will make front end and back end aware of static queries used in the project and will only allow these
-  queries for better security and less bandwidth.
-
 * [TypeScript] support. This kit supports both ES6 and TypeScript out of the box.
 
 * Internationalization with [i18next]
 
-* [Apollo Persisted queries] support. Saving bandwidth between the client and server by only sending a query ID or hash 
+* [Apollo Automatic Persisted Queries] support. Saving bandwidth between the client and server by only sending a query ID or hash 
   instead of an entire GraphQL query.
 
 ## Project Structure
@@ -533,7 +528,6 @@ Copyright © 2016, 2017 [SysGears INC]. This source code is licensed under the [
 [heroku]: https://heroku.com
 [eslint]: http://eslint.org
 [sysgears inc]: http://sysgears.com
-[persistgraphql webpack plugin]: https://github.com/sysgears/persistgraphql-webpack-plugin
 [dataloader]: https://github.com/facebook/dataloader
 [graphql cursor pagination]: https://medium.com/@gethylgeorge/infinite-scrolling-in-react-using-apollo-and-react-virtualized-graphql-cursor-pagination-bf80617a8a1a#.jkmmu9qz8
 [relay-style cursor pagination]: http://dev.apollodata.com/react/pagination.html#relay-cursors
