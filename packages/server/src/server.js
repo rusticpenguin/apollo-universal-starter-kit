@@ -9,7 +9,19 @@ let server;
 
 server = http.createServer();
 server.on('request', app);
-graphqlServer.installSubscriptionHandlers(server);
+
+const addGraphQLSubscriptions = async httpServer => {
+  if (module.hot && module.hot.data) {
+    const prevServer = module.hot.data.graphqlServer;
+    if (prevServer) {
+      await prevServer.stop();
+      graphqlServer.installSubscriptionHandlers(httpServer);
+    }
+  } else {
+    graphqlServer.installSubscriptionHandlers(httpServer);
+  }
+};
+addGraphQLSubscriptions(server);
 
 server.listen(serverPort, () => {
   log.info(`API is now running on port ${serverPort}`);
@@ -20,8 +32,9 @@ server.on('close', () => {
 });
 
 if (module.hot) {
-  module.hot.dispose(() => {
+  module.hot.dispose(data => {
     try {
+      data.graphqlServer = graphqlServer;
       if (server) {
         server.close();
       }
@@ -33,7 +46,7 @@ if (module.hot) {
     try {
       server.removeAllListeners('request');
       server.on('request', app);
-      graphqlServer.installSubscriptionHandlers(server);
+      addGraphQLSubscriptions(server);
     } catch (error) {
       log(error.stack);
     }
