@@ -8,6 +8,7 @@ import payments from './payments';
 import contact from './contact';
 import pageNotFound from './pageNotFound';
 import pagination from './pagination';
+import layout from './layout';
 import './favicon';
 
 import ClientModule from './ClientModule';
@@ -19,6 +20,7 @@ export default new ClientModule(
   upload,
   contact,
   pagination,
+  layout,
   payments,
   user,
   i18n,
